@@ -1,0 +1,12 @@
+0 ok 904 1113.3 915 103 {'queue_time': 0.287387846, 'prompt_time': 0.046042073, 'completion_time': 0.215034045, 'total_time': 0.261076118} 7067
+1 ok 981 1401.9 956 232 {'queue_time': 0.288955364, 'prompt_time': 0.22847737, 'completion_time': 0.494880115, 'total_time': 0.723357485} 6744
+2 ok 765 990.6 866 108 {'queue_time': 0.315916103, 'prompt_time': 0.063681132, 'completion_time': 0.225366831, 'total_time': 0.289047963} 6902
+3 ok 642 983.1 1031 177 {'queue_time': 0.158264977, 'prompt_time': 0.059586292, 'completion_time': 0.370671988, 'total_time': 0.43025828} 6866
+4 ok 810 1429.7 1066 300 {'queue_time': 0.37650211, 'prompt_time': 0.065936955, 'completion_time': 0.626296359, 'total_time': 0.692233314} 6702
+5 ok 661 1072.8 1527 215 {'queue_time': 0.15418283, 'prompt_time': 0.088369078, 'completion_time': 0.449121854, 'total_time': 0.537490932} 6173
+6 ok 810 1196.4 2816 190 {'queue_time': 0.245469569, 'prompt_time': 0.133485516, 'completion_time': 0.404539326, 'total_time': 0.538024842} 4884
+7 ok 626 992.4 1748 175 {'queue_time': 0.156862046, 'prompt_time': 0.084809313, 'completion_time': 0.372152335, 'total_time': 0.456961648} 4971
+8 ok 830 1141.8 1635 151 {'queue_time': 0.368444605, 'prompt_time': 0.081622719, 'completion_time': 0.316497464, 'total_time': 0.398120183} 5161
+9 ok 601 1225.4 1340 300 {'queue_time': 0.158283466, 'prompt_time': 0.060041821, 'completion_time': 0.62996886, 'total_time': 0.690010681} 5695
+10 ok 867 1309.4 1359 211 {'queue_time': 0.37665645, 'prompt_time': 0.104336434, 'completion_time': 0.442437144, 'total_time': 0.546773578} 6069
+11 ok 838 1207.6 1486 174 {'queue_time': 0.370444828, 'prompt_time': 0.08928166, 'completion_time': 0.375794988, 'total_time': 0.465076648} 6339

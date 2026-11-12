@@ -1,0 +1,194 @@
+# Evaluation questions. Every gold answer was checked against papers/blocks.jsonl
+# (page + section given). Grading (relay/grade.py):
+#   answerable: correct  = every `must` group matches (any regex in a group) AND the
+#                          answer cites the expected paper within +-1 page of `pages`
+#               refused  -> refused_wrongly ; otherwise wrong
+#   unanswerable: refused (or says the papers do not state it) -> refused_correctly,
+#                 an answer asserting a value -> wrong
+#
+# Grader changes after manual review of real answers (wording variants of the
+# SAME fact only; no gold value was changed):
+#   q01  "12.5 frames per second" accepted as well as "12.5 Hz"
+#   q11  "three and a half days" / "300,000 training steps" accepted
+#   q03  "7 B parameters" (with a space) accepted as well as "7B"
+#   all  thin-space thousands separators ("2 048") normalised before matching
+#   all  correct = right facts + cites the right paper; page agreement is
+#        reported separately (Moshi restates values in Table 1 and in §5.3)
+# `trap` names the naive-retriever failure the question probes (see WRITEUP).
+
+- id: q01
+  q: What frame rate and bitrate does the Mimi codec operate at?
+  answerable: true
+  paper: Moshi
+  pages: [11]
+  must: [["12\\.5 ?(Hz|frames|steps)"], ["1\\.1 ?kbps"]]
+
+- id: q02
+  q: How many residual quantizers does Mimi use, and what is the codebook size of each?
+  answerable: true
+  paper: Moshi
+  pages: [11]
+  must: [["\\b8\\b", "eight"], ["2048", "2,048"]]
+
+- id: q03
+  q: How large is the Helium text model and how many tokens was it pretrained on?
+  answerable: true
+  paper: Moshi
+  pages: [3, 8]
+  must: [["7 ?B\\b", "7 ?billion"], ["2\\.1 ?T", "2\\.1 ?trillion"]]
+
+- id: q04
+  q: What is Moshi's theoretical latency, and what latency does it reach in practice?
+  answerable: true
+  paper: Moshi
+  pages: [1, 2]
+  must: [["160 ?ms"], ["200 ?ms"]]
+
+- id: q05
+  q: How many hours of audio are in the unsupervised audio dataset used to pre-train Moshi?
+  answerable: true
+  paper: Moshi
+  pages: [17]
+  must: [["7 million", "7M", "7,000,000"]]
+
+- id: q06
+  q: Which dataset was Moshi fine-tuned on to gain full-duplex capabilities?
+  answerable: true
+  paper: Moshi
+  pages: [8, 18, 20]
+  must: [["Fisher"]]
+
+- id: q07
+  q: What acoustic delay is used between semantic and acoustic tokens during Moshi pre-training, and what is it in the later training stages?
+  answerable: true
+  paper: Moshi
+  pages: [8, 14]
+  must: [["\\b2\\b"], ["\\b1\\b"]]
+  trap: table_values
+
+- id: q08
+  q: In Moshi, what does the Inner Monologue method predict before the audio tokens?
+  answerable: true
+  paper: Moshi
+  pages: [1, 3, 15, 16]
+  must: [["text"]]
+
+- id: q09
+  q: How many warmup steps were used in the Transformer's learning-rate schedule?
+  answerable: true
+  paper: Transformer
+  pages: [7]
+  must: [["4,?000"]]
+
+- id: q10
+  q: What dropout rate did the big Transformer model use for English-to-French translation?
+  answerable: true
+  paper: Transformer
+  pages: [8]
+  must: [["0\\.1\\b"]]
+  trap: near_duplicate_value   # 0.3 is the big-model default; the EN-FR big model used 0.1
+
+- id: q11
+  q: On what hardware and for how long were the big Transformer models trained?
+  answerable: true
+  paper: Transformer
+  pages: [7]
+  must: [["P100"], ["3\\.5 days", "three and a half days", "300,?000 (training )?steps"]]
+
+- id: q12
+  q: What beam size and length penalty were used for Transformer translation decoding?
+  answerable: true
+  paper: Transformer
+  pages: [8]
+  must: [["beam size of 4", "\\b4\\b"], ["0\\.6"]]
+
+- id: q13
+  q: What vocabulary was used for the WMT 2014 English-German data in the Transformer paper?
+  answerable: true
+  paper: Transformer
+  pages: [7]
+  must: [["byte-pair", "BPE"], ["37,?000"]]
+
+- id: q14
+  q: What BLEU score did the big Transformer achieve on WMT 2014 English-to-French?
+  answerable: true
+  paper: Transformer
+  pages: [1, 8]
+  must: [["41\\.8", "41\\.0"]]
+  trap: internal_inconsistency   # abstract + Table 2 say 41.8, section 6.1 text says 41.0
+
+- id: q15
+  q: How does H-Net's routing module decide where to place chunk boundaries?
+  answerable: true
+  paper: H-Net
+  pages: [2, 6]
+  must: [["cosine similarit"], ["adjacent", "consecutive"]]
+
+- id: q16
+  q: What layer type does H-Net use for its encoder and decoder networks?
+  answerable: true
+  paper: H-Net
+  pages: [5]
+  must: [["Mamba-?2", "Mamba"]]
+
+- id: q17
+  q: What dataset and how much data were H-Net's language models trained on, and how many bytes per sequence?
+  answerable: true
+  paper: H-Net
+  pages: [11]
+  must: [["FineWeb-?Edu"], ["100B", "100 ?billion"], ["8192", "8,192"]]
+
+- id: q18
+  q: On English, how many bytes per chunk does the space-like delimiter heuristic average?
+  answerable: true
+  paper: H-Net
+  pages: [10]
+  must: [["6\\.0", "\\b6 bytes"]]
+
+- id: q19
+  q: What improvement in data efficiency does H-Net report on DNA language modeling?
+  answerable: true
+  paper: H-Net
+  pages: [1, 4]
+  must: [["3\\.6", "4 ?×", "4x", "nearly 4"]]
+
+- id: q20
+  q: What is the model dimension d_model of the base Transformer?
+  answerable: true
+  paper: Transformer
+  pages: [3, 9]
+  must: [["512"]]
+
+# ---------------------------------------------------------------- not in the papers
+- id: u01
+  q: Under what license are the Moshi model weights released?
+  answerable: false
+  paper: Moshi
+  trap: off_topic_lexical_match   # "under CC BY" on p.61 refers to the ALERT table, not Moshi
+
+- id: u02
+  q: How many H100 GPUs were used to train Moshi?
+  answerable: false
+  paper: Moshi
+  trap: partial_answer             # p.20 says H100 GPUs, never how many
+
+- id: u03
+  q: What GPUs or accelerators were used to train H-Net?
+  answerable: false
+  paper: H-Net
+
+- id: u04
+  q: What BLEU score does Moshi achieve on WMT 2014 English-German?
+  answerable: false
+  paper: Moshi
+  trap: cross_paper_contamination  # BLEU numbers exist, but only in the Transformer paper
+
+- id: u05
+  q: How much energy or CO2 did training the Transformer models consume?
+  answerable: false
+  paper: Transformer
+
+- id: u06
+  q: What inference throughput in tokens per second does H-Net reach compared with a Transformer?
+  answerable: false
+  paper: H-Net

@@ -1,0 +1,21 @@
+# Python 3.12. Install with:  .venv\Scripts\python -m pip install -r requirements.txt
+
+# --- model calls (real Groq + stand-in), streaming, reading rate-limit headers ---
+httpx==0.28.1
+python-dotenv==1.2.4
+
+# --- stand-in model service (HTTP + server-sent-event streaming) ---
+fastapi==0.162.5
+uvicorn==0.54.0
+
+# --- papers: download + PDF text extraction with page numbers ---
+pymupdf==2.1
+
+# --- retrieval: lexical index, embeddings and cross-encoder re-ranking (ONNX, no torch) ---
+rank-bm25==0.2.2
+fastembed==0.9.1
+numpy==2.5.4
+
+# --- evaluation questions, results analysis ---
+PyYAML==6.0.3
+pandas==3.1.1

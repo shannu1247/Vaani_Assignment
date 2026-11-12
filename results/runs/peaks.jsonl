@@ -1,0 +1,7 @@
+{"scenario": "real_primary_day_exhausted", "source": "real", "tag": "final_day1", "peak_queue": 1, "requests": 21, "duration_s": 233.8}
+{"scenario": "steady", "source": "stand-in", "tag": "standin_final", "peak_queue": 1, "requests": 41, "duration_s": 298.1}
+{"scenario": "burst", "source": "stand-in", "tag": "standin_final", "peak_queue": 1, "requests": 60, "duration_s": 221.2}
+{"scenario": "overload", "source": "stand-in", "tag": "standin_final", "peak_queue": 1, "requests": 134, "duration_s": 298.5}
+{"scenario": "rpm_halved", "source": "stand-in", "tag": "standin_final", "peak_queue": 1, "requests": 41, "duration_s": 298.1}
+{"scenario": "daily_exhausted", "source": "stand-in", "tag": "standin_final", "peak_queue": 1, "requests": 23, "duration_s": 176.4}
+{"scenario": "naive_retry_overload", "source": "stand-in", "tag": "standin_final", "peak_queue": 0, "requests": 134, "duration_s": 298.5}

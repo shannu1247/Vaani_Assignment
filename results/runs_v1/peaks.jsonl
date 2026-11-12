@@ -1,0 +1,3 @@
+{"scenario": "steady", "source": "stand-in", "tag": "standin_v1", "peak_queue": 1, "requests": 41, "duration_s": 298.1}
+{"scenario": "real_steady", "source": "real", "tag": "real_v1", "peak_queue": 1, "requests": 25, "duration_s": 291.4}
+{"scenario": "real_burst", "source": "real", "tag": "real_v1", "peak_queue": 1, "requests": 16, "duration_s": 8.1}
